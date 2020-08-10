@@ -2,12 +2,11 @@
   <div>
     <div class="title">热销推荐</div>
     <ul>
-      <li class="item border-bottom" v-for="item of recommendList" :key="item.id">
+      <li class="item border-bottom" v-for="item of list" :key="item.id">
           <img class="item-img" :src="item.imgUrl" alt="" srcset="">
         <div class="item-info">
           <p class="item-title">{{item.title}}</p>
           <p class="item-desc">{{item.desc}}</p>
-
           <button class="item-button">查看详情</button>
         </div>
       </li>
@@ -18,26 +17,8 @@
 <script>
 export default {
   name: 'HomeRecommend',
-  data () {
-    return {
-      recommendList: [{
-      id: '001',
-      imgUrl: 'http://img1.qunarzz.com/sight/p0/1602/92/920e47352552c1c990.water.jpg_200x200_dba18b05.jpg',
-      title: '天坛公园',
-      desc: '非常好玩，非常好玩，非常好玩，非常好玩，非常好玩，非常好玩，非常好玩，非常好玩'
-    }, {
-      id: '002',
-      imgUrl: 'http://img1.qunarzz.com/sight/p0/1602/92/920e47352552c1c990.water.jpg_200x200_dba18b05.jpg',
-      title: '天坛公园',
-      desc: '非常好玩，非常好玩，非常好玩，非常好玩，非常好玩，非常好玩，非常好玩，非常好玩'
-    }, {
-      id: '003',
-      imgUrl: 'http://img1.qunarzz.com/sight/p0/1602/92/920e47352552c1c990.water.jpg_200x200_dba18b05.jpg',
-      title: '天坛公园',
-      desc: '非常好玩，非常好玩，非常好玩，非常好玩，非常好玩，非常好玩，非常好玩，非常好玩'
-    }]
-    }
-    
+  props: {
+    list: Array
   }
 }
 </script>

@@ -1,51 +1,63 @@
 <template>
-<div class="wrapper">
- <div class="back-icon">
-   <span class="iconfont">&#xe624;</span>
+<div class="header">
+ <div class="header-left">
+   <div class="iconfont back-icont">&#xe624;</div>
 </div>
-<div class="search">
+<div class="header-input">
    输入城市/景点/游玩主题
    <span class="iconfont search-icon">&#xe632;</span>
 </div>
-<div class="city">
-   黄冈
-   <span class="iconfont">&#xe64a;</span>
+<div class="header-right">
+   {{this.city}}
+   <span class="iconfont arrow-icon">&#xe64a;</span>
 </div>
 </div>
 </template>
 
 <script>
 export default {
-  name: 'HomeHeader'
+  name: 'HomeHeader',
+  props: {
+    city: {
+      type: String
+    }
+  }
 }
 </script>
 
 <style lang="stylus" scoped>
-.wrapper
-     height .64rem
-     background #00bcd4
-     color white
-     line-height .64rem
- .back-icon
-     float left
-     width .64rem
-     text-align center
- .search
-     float left
-     height  .44rem
-     background #fff
-     color gray
-     line-height .44rem
-     border-radius .1rem
-     margin  .1rem .1rem
-     font-size .2rem
-     padding  0 2rem
-     position relative
-     .search-icon
-         position absolute
-         left .1rem
-         top 0rem
- .city
-     width 1rem
-     float right
+      @import "~styles/varibles.styl"
+/*
+  1rem = html fontsize 50px
+*/
+  .header
+    display: flex
+    line-height: .86rem
+    background-color: $bgColor;
+    color: #fff
+    .header-left
+      width: .64rem
+      float: left
+      .back-icon
+        text-align center
+        font-size .4rem
+    .header-input
+      flex:1
+      height: .64rem
+      line-height: .64rem
+      margin-top: .12rem
+      margin-left: .2rem
+      padding-left: .2rem
+      background-color: #fff
+      border-radius: .1rem
+      color: #ccc
+    .header-right
+      min-width: 1.04rem
+      padding: 0 .1rem
+      float: right
+      text-align: center
+      color: #fff
+      .arrow-icon
+        margin-left: -.04rem
+        font-size: .24rem
 </style>
