@@ -1,15 +1,20 @@
 <template>
-  <div class="header">
+  <div class="header" @click="handle">
     城市选择
     <router-link to="/">
-      <div class="iconfont header-back">&#xe624;</div>
+      <div class="iconfont header-back" >&#xe624;</div>
     </router-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'CityHeader'
+  name: 'CityHeader',
+  methods: {
+    handle () {
+      console.log(1)
+    }
+  }
 }
 </script>
 

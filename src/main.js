@@ -10,6 +10,10 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'styles/border.css'
 import 'styles/iconfont.css'
 import 'styles/reset.css'
+
+// 引入 vuex 的内容
+import store from './store'
+
 Vue.config.productionTip = false
 Vue.use(VueAwesomeSwiper)
 
@@ -17,6 +21,7 @@ Vue.use(VueAwesomeSwiper)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
