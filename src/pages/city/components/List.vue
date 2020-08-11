@@ -17,7 +17,7 @@
         </div>
       </div>
     </div>
-    <div class="area" v-for="(item, key) of cities" :key="key">
+    <div class="area" v-for="(item, key) of cities" :key="key" :ref="key">
       <div class="title border-topbottom">{{key}}</div>
         <div class="item-list">
           <div class="item border-bottom" v-for="innerItem of item" :key="innerItem.id">{{innerItem.name}}</div>
@@ -33,10 +33,21 @@ export default {
   name: 'CityList',
   props: {
     cities: Object,
-    hot: Array
+    hot: Array,
+    letter: String
   },
   mounted () {
     this.scroll = new Bscroll(this.$refs.wrapper)
+  },
+  watch: {
+    letter () {
+      // better-scroll 通过了方法,如果某个元素存在，我们就可以滚到某个元素所在的区域上面。
+      if (this.letter) {
+        const element = this.$refs[this.letter][0]
+        // console.log(element)
+        this.scroll.scrollToElement(element)
+      }
+    }
   }
 }
 </script>
