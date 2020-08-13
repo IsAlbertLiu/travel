@@ -1,5 +1,5 @@
 <template>
-  <div class="header" @click="handle">
+  <div class="header">
     城市选择
     <router-link to="/">
       <div class="iconfont header-back" >&#xe624;</div>
@@ -9,12 +9,7 @@
 
 <script>
 export default {
-  name: 'CityHeader',
-  methods: {
-    handle () {
-      console.log(1)
-    }
-  }
+  name: 'CityHeader'
 }
 </script>
 

@@ -5,7 +5,7 @@
       <div class="title border-topbottom">当前城市</div>
       <div class="button-list">
         <div class="button-wrapper">
-          <div class="button">{{this.$store.state.city}}</div>
+          <div class="button">{{this.currentCity}}</div>
         </div>
       </div>
     </div>
@@ -20,7 +20,7 @@
     <div class="area" v-for="(item, key) of cities" :key="key" :ref="key">
       <div class="title border-topbottom">{{key}}</div>
         <div class="item-list">
-          <div class="item border-bottom" @click="handle(innerItem.name)" v-for="innerItem of item" :key="innerItem.id">{{innerItem.name}}</div>
+          <div class="item border-bottom" @click="handleCityClick(innerItem.name)" v-for="innerItem of item" :key="innerItem.id">{{innerItem.name}}</div>
         </div>
       </div>
  </div>
@@ -29,19 +29,23 @@
 
 <script>
 import Bscroll from 'better-scroll'
+import {mapState, mapMutations} from 'vuex'
 export default {
   name: 'CityList',
+  computed: {
+    ...mapState({
+      // 把 vuex 的属性映射到这个 computed 计算属性里，映射到的属性名称叫做 currentCity
+      currentCity: 'city'
+    })
+  },
   methods: {
-    handle (city) {
-      this.$store.dispatch('changeCity', city)
+    handleCityClick (city) {
+      // this.$store.dispatch('changeCity', city)
+      this.changeCity(city)
       // 编程式跳转
       this.$router.push('/')
     },
-    handleCityClick (city) {
-      this.$store.dispatch('changeCity', city)
-      // 编程式跳转
-      this.$router.push('/')
-    }
+    ...mapMutations(['changeCity'])
   },
   props: {
     cities: Object,
